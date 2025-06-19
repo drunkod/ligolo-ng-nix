@@ -12,8 +12,6 @@
         pkgs = nixpkgs.legacyPackages.${system};
         ligoloPackage = pkgs.ligolo-ng;
 
-        # Make the configuration file available to the script.
-        configFile = ./ligolo-ng.yaml;
       in
       {
         # Packages define runnable wrapper scripts.
@@ -28,13 +26,12 @@
                 exit 1
             fi
 
-            echo "Loading configuration from: ${configFile}"
             echo "The process will run in the background."
 
             # Use '-daemon' to run as a background process.
             # Use '-selfcert' for easy testing without real certs.
             # Use '-config' to load our pre-configured interface and routes.
-            exec ${ligoloPackage}/bin/proxy -daemon -selfcert -config ${configFile} "$@"
+            exec ${ligoloPackage}/bin/proxy -daemon -selfcert -config ligolo-ng.yaml "$@"
           '';
 
           # Package to run the Ligolo-ng agent (client-side).
