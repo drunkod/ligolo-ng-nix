@@ -12,7 +12,7 @@ interface:
   ligolo:
     # This route will make the agent send all its internet traffic through the tunnel.
     routes:
-      - "0.0.0.0/0"
+      - "10.24.0.0/24"
 
 # Disable the web UI. We don't need it for our automated daemon.
 web:
