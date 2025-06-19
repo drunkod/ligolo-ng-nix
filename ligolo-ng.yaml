@@ -1,39 +1,19 @@
-# Основная конфигурация прокси  
-proxy:  
-  # Адрес прослушивания  
-  laddr: "0.0.0.0:11601"  
-    
-  # TLS настройки  
-  tls:  
-    # Использовать самоподписанные сертификаты  
-    selfcert: true  
-    selfcertdomain: "ligolo"  
-    # Или использовать Let's Encrypt  
-    # autocert: true  
-    # alloweddomains: ["yourdomain.com"]  
-  
-# Настройки агентов 2 
-agent:  
-  # Автоматическая привязка агентов  
-  autobind: true  
-    
-  # Настройки интерфейса по умолчанию  
-  interface: "ligolo"  
-  
-# Настройки сетевых интерфейсов  
-interface:  
-  ligolo:  
-    # Маршруты для интернет-трафика  
-    routes:  
-      - "0.0.0.0/0"        # Весь IPv4 трафик  
-      - "::/0"             # Весь IPv6 трафик (опционально)  
-  
-# Веб-интерфейс (опционально)  
-web:  
-  enabled: false  
-  listen: "127.0.0.1:8080"  
-    
-# Логирование  
-logging:  
-  level: "info"  
-  # Для отладки используйте "debug"
+# This is the correct, final, fully automated configuration.
+agent:
+  # This tells the proxy to automatically handle the agent with this specific ID.
+  1c7508f3e5db:
+    # autobind: true is the magic key. It automatically starts the tunnel.
+    autobind: true
+    # The name of the tunnel interface to create.
+    interface: ligolo
+
+interface:
+  # This block defines the settings for the 'ligolo' interface.
+  ligolo:
+    # This route will make the agent send all its internet traffic through the tunnel.
+    routes:
+      - "0.0.0.0/0"
+
+# Disable the web UI. We don't need it for our automated daemon.
+web:
+  enabled: false
