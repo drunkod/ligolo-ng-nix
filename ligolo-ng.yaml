@@ -1,0 +1,12 @@
+# Disable the WebUI and API to prevent interactive setup prompts
+# and run purely as a background daemon.
+web:
+  enabled: false
+
+# Pre-configure a network interface and a route.
+# This will be created automatically when an agent connects.
+interface:
+  test-tunnel:
+    routes:
+      - 10.254.0.0/24
+      - 10.255.0.0/24
