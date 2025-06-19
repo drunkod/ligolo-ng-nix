@@ -1,6 +1,6 @@
 agent:
     deadbeefcafe:
-        autobind: false
+        autobind: true
         interface: ligolo
 interface:
     ligolosample:
