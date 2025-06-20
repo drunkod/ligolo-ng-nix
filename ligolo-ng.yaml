@@ -14,7 +14,7 @@ web:
     debug: true
     enabled: true
     enableui: true
-    listen: 127.0.0.1:8080
+    listen: 0.0.0.0:8080
     logfile: ui.log
     secret: 2a73bbe1c1ce165b1afa7262b217e4265a3c56886a938970e10e788964852d28
     tls:
@@ -26,6 +26,6 @@ web:
         selfcert: false
         selfcertdomain: ligolo
     trustedproxies:
-        - 127.0.0.1
+        - 0.0.0.0
     users:
         ligolo: $argon2id$v=19$m=32768,t=3,p=4$j8bffwTwYs/jq7lJtyYpsA$0dSmT1yKzLJOy5y+fcPFd25H4nlGYbzHMeT6TtwH1ic
