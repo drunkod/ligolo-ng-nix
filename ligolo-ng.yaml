@@ -1,19 +1,31 @@
-# This is the correct, final, fully automated configuration.
 agent:
-  # This tells the proxy to automatically handle the agent with this specific ID.
-  1c7508f3e5db:
-    # autobind: true is the magic key. It automatically starts the tunnel.
-    autobind: true
-    # The name of the tunnel interface to create.
-    interface: ligolo
-
+    deadbeefcafe:
+        autobind: true
+        interface: ligolo
 interface:
-  # This block defines the settings for the 'ligolo' interface.
-  ligolo:
-    # This route will make the agent send all its internet traffic through the tunnel.
-    routes:
-      - "10.24.0.0/24"
-
-# Disable the web UI. We don't need it for our automated daemon.
+    ligolosample:
+        routes:
+            - 10.254.0.0/24
+            - 10.255.0.0/24
 web:
-  enabled: false
+    behindreverseproxy: false
+    corsallowedorigin:
+        - https://webui.ligolo.ng
+    debug: true
+    enabled: true
+    enableui: true
+    listen: 127.0.0.1:8080
+    logfile: ui.log
+    secret: 2a73bbe1c1ce165b1afa7262b217e4265a3c56886a938970e10e788964852d28
+    tls:
+        alloweddomains: []
+        autocert: false
+        certfile: ""
+        enabled: false
+        keyfile: ""
+        selfcert: false
+        selfcertdomain: ligolo
+    trustedproxies:
+        - 127.0.0.1
+    users:
+        ligolo: $argon2id$v=19$m=32768,t=3,p=4$j8bffwTwYs/jq7lJtyYpsA$0dSmT1yKzLJOy5y+fcPFd25H4nlGYbzHMeT6TtwH1ic
